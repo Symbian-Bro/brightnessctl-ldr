@@ -13,6 +13,7 @@ def main():
         ldrvalue = int(serial_read())
         percent = (ldrvalue / 1023) * 100
         subprocess.run(['brightnessctl', 's', str(percent)])
+        time.sleep(7)
 
 if __name__ == "__main__":
     main()
