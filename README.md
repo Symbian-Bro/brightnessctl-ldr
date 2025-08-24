@@ -1,5 +1,5 @@
 # brightnessclt-ldr
-A brightnessctl extension with ldr input for automatic brightness adjustment.
+A brightnessctl extension with LDR input for automatic brightness adjustment.
 
 Pre-requisites : brightnessctl and python3 should be pre-installed
 
