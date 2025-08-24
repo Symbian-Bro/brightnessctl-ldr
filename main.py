@@ -12,15 +12,17 @@ def port_checker():
             return port.device
     return '/dev/ttyUSB0'
 
-def serial_read(port, baudrate, timeout=5):
-    with serial.Serial(port, baudrate, timeout=timeout) as ser:
+def serial_read(port, baudrate):
+    with serial.Serial(port, baudrate, timeout=5) as ser:
             line = int(ser.readline().decode('utf-8').strip())
             return line
 
 def main():
     time.sleep(5)
+    port = port_checker()
+    baudrate = 9600
     while True:
-        ldrvalue = int(serial_read())
+        ldrvalue = 1023 - (serial_read(port, baudrate))
         percent = (ldrvalue / 1023) * 100
         subprocess.run(['brightnessctl', 's', str(percent)])
         time.sleep(7)
