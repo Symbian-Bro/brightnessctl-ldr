@@ -26,17 +26,16 @@ def main():
         percent = (ldrvalue / 1023) * 100
         temp = subprocess.run(['brightnessctl', 'g'],capture_output=True)
         current = int(temp.stdout.strip())
-        difference = abs(current - percent)
         if(current < percent):
             while(current <= percent):
                 current = current + 2
                 subprocess.run(['brightnessctl', 's', str(current)])
-                time.sleep(1)
+                time.sleep(0.4)
         elif(current > percent):
             while(current >= percent):
                 current = current - 2
                 subprocess.run(['brightnessctl', 's', str(current)])
-                time.sleep(1)
+                time.sleep(0.4)
         else:
             pass
 
