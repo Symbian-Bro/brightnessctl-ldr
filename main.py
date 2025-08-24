@@ -7,6 +7,12 @@ def serial_read(port='/dev/ttyUSB0', baudrate=9600, timeout=5):
             line = int(ser.readline().decode('utf-8').strip())
             return line
 
-ldrvalue = int(serial_read())
+def main():
+    time.sleep(5)
+    while True:
+        ldrvalue = int(serial_read())
+        percent = (ldrvalue / 1023) * 100
+        subprocess.run(['brightnessctl', 's', str(percent)])
 
-percent = (ldrvalue / 1023) * 100
+if __name__ == "__main__":
+    main()
