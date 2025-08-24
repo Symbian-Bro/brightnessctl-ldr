@@ -1,5 +1,4 @@
 import serial
-import time
 import subprocess
 import serial.tools.list_ports as listings
 
@@ -30,12 +29,12 @@ def main():
             while(current <= percent):
                 current = current + 2
                 subprocess.run(['brightnessctl', 's', str(current)])
-                time.sleep(0.4)
+                break
         elif(current > percent):
             while(current >= percent):
                 current = current - 2
                 subprocess.run(['brightnessctl', 's', str(current)])
-                time.sleep(0.4)
+                break
         else:
             pass
 
