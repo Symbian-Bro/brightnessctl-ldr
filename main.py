@@ -1,6 +1,7 @@
 import serial
 import subprocess
 import serial.tools.list_ports as listings
+import time
 
 def port_checker():
     ports = listings.comports()
@@ -17,7 +18,7 @@ def serial_read(port, baudrate):
             return line
 
 def main():
-    time.sleep(5)
+    time.sleep(3)
     port = port_checker()
     baudrate = 9600
     while True:
