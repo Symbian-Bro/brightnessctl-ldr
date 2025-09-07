@@ -23,7 +23,7 @@ def main():
     baudrate = 9600
     while True:
         ldrvalue = 1023 - (serial_read(port, baudrate))
-        percent = (ldrvalue / 1023) * 100
+        percent =  99*(math.log(ldrvalue + 1)/math.log(1024))
         temp = subprocess.run(['brightnessctl', 'g'],capture_output=True)
         current = int(temp.stdout.strip())
         if(current < percent):
